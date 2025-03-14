@@ -1,0 +1,36 @@
+# Arquivos de credenciais e configuração (IMPORTANTE! Mantenha estes arquivos privados)
+.env                    # Suas variáveis de ambiente (tokens do Twilio, etc)
+credentials.json        # Credenciais do Google Calendar
+token.pickle           # Token de autenticação do Google
+*.pem                  # Certificados SSL/TLS
+
+# Cache e arquivos temporários Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Ambiente virtual
+venv/
+ENV/
+.venv
+.env.local
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs e dados temporários
+*.log
+logs/
+temp/
+tmp/
+
+# Arquivos de build e distribuição
+build/
+dist/
+*.egg-info/
+*.egg 
