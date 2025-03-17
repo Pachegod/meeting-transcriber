@@ -10,6 +10,7 @@ ENV/
 .env
 .venv
 .python-version
+.env.local
 
 # Arquivos de cache Python
 __pycache__/
@@ -21,6 +22,7 @@ htmlcov/
 coverage.xml
 .tox/
 .nox/
+*.so
 
 # Dependências Node.js
 node_modules/
@@ -48,6 +50,8 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+temp/
+tmp/
 
 # Arquivos de IDE
 .idea/
@@ -96,6 +100,10 @@ temp/
 config.local.js
 config.local.py
 
+# Arquivos de credenciais e configuração
+credentials.json        # Credenciais do Google Calendar
+token.pickle           # Token de autenticação do Google
+
 # Arquivos de certificados
 *.pem
 *.key
@@ -113,7 +121,9 @@ config.local.py
 /frontend/build/
 /backend/dist/
 /frontend/dist/
+*.egg-info/
+*.egg
 
 # Arquivos específicos do projeto
 whisper-models/
-transcriptions/ 
+transcriptions/
