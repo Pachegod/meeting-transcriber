@@ -37,6 +37,14 @@ meeting-transcriber/
 
 ## Instalação e Execução
 
+### Clonando o Repositório
+
+```powershell
+# Clone o repositório
+git clone https://github.com/seu-usuario/meeting-transcriber.git
+cd meeting-transcriber
+```
+
 ### Backend
 
 1. Navegue até o diretório do backend:
