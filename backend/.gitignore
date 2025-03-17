@@ -1,0 +1,54 @@
+# Ambiente virtual
+venv/
+env/
+ENV/
+.env
+.venv
+
+# Arquivos de cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Arquivos de ambiente
+.env
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs/
+*.log
+
+# Arquivos temporários
+tmp/
+temp/
+
+# Arquivos de banco de dados
+*.sqlite
+*.sqlite3
+*.db
+
+# Arquivos de mídia
+uploads/
+media/
+*.mp3
+*.wav
+*.mp4
+*.webm
+*.ogg
+
+# Modelos baixados
+whisper-models/
+models/
+
+# Arquivos de transcrição
+transcriptions/
+
+# Arquivos específicos do projeto
+instance/
+.webassets-cache 

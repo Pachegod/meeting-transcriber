@@ -1,0 +1,50 @@
+version: 2
+updates:
+  # Configuração para dependências npm do frontend
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "frontend"
+    commit-message:
+      prefix: "npm"
+      include: "scope"
+    ignore:
+      # Ignorar atualizações de versões principais que podem quebrar a compatibilidade
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  # Configuração para dependências pip do backend
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "backend"
+    commit-message:
+      prefix: "pip"
+      include: "scope"
+    ignore:
+      # Ignorar atualizações de versões principais que podem quebrar a compatibilidade
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  # Configuração para atualizações do GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "github-actions"
+      include: "scope" 

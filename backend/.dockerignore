@@ -1,0 +1,50 @@
+# Ambiente virtual
+venv/
+env/
+.env
+
+# Arquivos de cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Arquivos de dados
+*.db
+*.sqlite3
+data/
+
+# Arquivos de mídia
+uploads/
+media/
+*.mp3
+*.wav
+*.webm
+
+# Arquivos de configuração local
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Arquivos de documentação
+docs/
+README.md
+LICENSE
+
+# Arquivos de teste
+tests/
+test_*.py
+*_test.py 

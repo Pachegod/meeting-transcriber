@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # Serviço do banco de dados PostgreSQL
+  postgres:
+    image: postgres:13
+    container_name: meeting-transcriber-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-meeting_transcriber}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - meeting-transcriber-network
+    restart: unless-stopped
+
+  # Serviço Redis para cache e filas
+  redis:
+    image: redis:6-alpine
+    container_name: meeting-transcriber-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - meeting-transcriber-network
+    restart: unless-stopped
+
+  # Serviço da API backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: meeting-transcriber-backend
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-meeting_transcriber}
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY:-supersecretkey}
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - CORS_ORIGINS=http://localhost:3000,http://frontend:3000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - meeting-transcriber-network
+    restart: unless-stopped
+
+  # Serviço do frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: meeting-transcriber-frontend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+      - NEXT_PUBLIC_RD_STATION_ENABLED=true
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - meeting-transcriber-network
+    restart: unless-stopped
+
+networks:
+  meeting-transcriber-network:
+    driver: bridge
+
+volumes:
+  postgres_data: 
