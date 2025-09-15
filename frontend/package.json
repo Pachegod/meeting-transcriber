@@ -19,7 +19,7 @@
     "date-fns": "^2.30.0",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
-    "lucide-react": "^0.482.0",
+    "lucide-react": "^0.544.0",
     "next": "^14.0.3",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
